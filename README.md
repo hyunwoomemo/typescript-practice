@@ -12,7 +12,8 @@
 - 자바스크립트(동적 타입) - `런타임에서 동작할 때` 타입 오류 확인
 - 타입스크립트(정적 타입) - `코드 작성 단계`에서 타입 오류 확인
 
-![typescript>javascript](image.png)
+![image](https://github.com/hyunwoomemo/typescript-practice/assets/105469077/f6af23d4-dddc-4d43-890a-91552dfbf9d8)
+
 
 > 개발 환경 구성
 
