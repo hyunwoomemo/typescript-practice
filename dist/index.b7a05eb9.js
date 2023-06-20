@@ -574,23 +574,15 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"jeorp":[function(require,module,exports) {
-// 배열
-const fruits = [
-    "Apple",
-    "Banana",
-    "Cherry"
-];
-console.log(fruits);
+function logValues(payload) {
+    for(const key in payload)console.log(payload[key]);
+}
 const hyun = {
     name: "Hyun",
-    age: 30
+    age: 30,
+    isValid: true
 };
-hyun["isValid"] = true;
-hyun["emails"] = [
-    "archihw94@gmail.com",
-    "test@gmail.com"
-];
-console.log(hyun);
+logValues(hyun);
 
 },{}]},["fUTXd","jeorp"], "jeorp", "parcelRequire51f0")
 

@@ -50,3 +50,56 @@ const hyun: User = {
 
 hyun.getName("hyun");
 ```
+
+#### 인덱싱 가능 타입 - 인덱스 시그니처(Index Signature)
+
+```js
+// 배열
+interface Fruits {
+  [item: number]: string;
+}
+
+const fruits: Fruits = ["Apple", "Banana", "Cherry"];
+
+// 객체
+interface User {
+  [key: string]: unknown;
+  name: string;
+  age: number;
+}
+
+const hyun: User = {
+  name: "Hyun",
+  age: 30,
+};
+
+hyun["isValid"] = true;
+hyun["emails"] = ["archihw94@gmail.com", "test@gmail.com"];
+```
+
+```js
+interface Payload {
+  [key: string]: unknown;
+}
+
+function logValues(payload: Payload) {
+  for (const key in payload) {
+    console.log(payload[key]);
+  }
+}
+
+interface User {
+  [key: string]: unknown;
+  name: string;
+  age: number;
+  isValid: boolean;
+}
+
+const hyun: User = {
+  name: "Hyun",
+  age: 30,
+  isValid: true,
+};
+
+logValues(hyun);
+```

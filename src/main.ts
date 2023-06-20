@@ -1,24 +1,24 @@
-// 배열
-interface Fruits {
-  [item: number]: string;
+interface Payload {
+  [key: string]: unknown;
 }
 
-const fruits: Fruits = ["Apple", "Banana", "Cherry"];
-console.log(fruits);
+function logValues(payload: Payload) {
+  for (const key in payload) {
+    console.log(payload[key]);
+  }
+}
 
-// 객체
 interface User {
   [key: string]: unknown;
   name: string;
   age: number;
+  isValid: boolean;
 }
 
 const hyun: User = {
   name: "Hyun",
   age: 30,
+  isValid: true,
 };
 
-hyun["isValid"] = true;
-hyun["emails"] = ["archihw94@gmail.com", "test@gmail.com"];
-
-console.log(hyun);
+logValues(hyun);
