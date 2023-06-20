@@ -14,7 +14,6 @@
 
 ![image](https://github.com/hyunwoomemo/typescript-practice/assets/105469077/f6af23d4-dddc-4d43-890a-91552dfbf9d8)
 
-
 > 개발 환경 구성
 
 1. npm init -y
@@ -22,3 +21,32 @@
 3. src 폴더에 main.ts 파일 생성
 4. index.html 파일 생성 후 main.ts 파일 넣어주기
 5. tsconfig.json 파일 생성 및 속성 값 넣어주기
+
+## 개념
+
+### 인터페이스
+
+#### 함수 타입 - 호출 시그니처(Call Signature)
+
+```js
+interface GetName {
+  (message: string): string;
+}
+
+interface User {
+  name: string;
+  age: number;
+  getName: GetName;
+}
+
+const hyun: User = {
+  name: "Hyun",
+  age: 30,
+  getName(message: string) {
+    console.log(message);
+    return this.name;
+  },
+};
+
+hyun.getName("hyun");
+```
