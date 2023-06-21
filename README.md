@@ -118,13 +118,30 @@ interface UserB extends UserA {
 
 const hyun: UserA = {
   name: 'Hyun',
-  age: 85,
-  isValid: true
+  age: 85
 }
 
 const neo: UserB = {
   name: 'Neo',
   age: 102,
   isValid: true
+}
+```
+
+```js
+interface FullName {
+  firstName: string
+  lastName: string
+}
+
+interface FullName {
+  middleName: string
+  lastName: string
+}
+
+const fullName: FullName = {
+  firstName: 'Tomas',
+  middleName: 'Sean',
+  lastName: 'Connery'
 }
 ```
