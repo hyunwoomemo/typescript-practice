@@ -1,24 +1,20 @@
-interface Payload {
-  [key: string]: unknown;
-}
-
-function logValues(payload: Payload) {
-  for (const key in payload) {
-    console.log(payload[key]);
-  }
-}
-
-interface User {
-  [key: string]: unknown;
+interface UserA {
   name: string;
   age: number;
+}
+
+interface UserB extends UserA {
   isValid: boolean;
 }
 
-const hyun: User = {
+const hyun: UserA = {
   name: "Hyun",
-  age: 30,
+  age: 85,
   isValid: true,
 };
 
-logValues(hyun);
+const neo: UserB = {
+  name: "Neo",
+  age: 102,
+  isValid: true,
+};
