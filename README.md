@@ -145,3 +145,78 @@ const fullName: FullName = {
   lastName: 'Connery'
 }
 ```
+
+### 타입 별칭 (Alias)
+
+```js
+type TypeA = string;
+type TypeB = string | number | boolean;
+type User =
+  | {
+      name: string,
+      age: number,
+      isValid: boolean,
+    }
+  | [string, number, boolean];
+
+const userA: User = {
+  name: "Neo",
+  age: 85,
+  isValid: true,
+};
+
+const userB: User = ["Evan", 36, false];
+
+function someFunc(param: TypeB): TypeA {
+  switch (typeof param) {
+    case "string":
+      return param.toUpperCase();
+    case "number":
+      return param.toFixed(2);
+    default:
+      return "Boolean!";
+  }
+}
+```
+
+type과 interface 중 interface를 권장한다고 한다!
+
+```js
+type TypeUser = {
+  name: string,
+  age: number,
+  isValid: boolean,
+};
+
+interface InterfaceUser {
+  name: string;
+  age: number;
+  isValid: boolean;
+}
+
+const hyun: InterfaceUser = {
+  name: "Hyun",
+  age: 30,
+  isValid: true,
+};
+```
+
+### 함수 - 명시적 this 타입
+
+```js
+interface Cat {
+  name: string;
+  age: number;
+}
+
+const cat: Cat = {
+  name: "Lucy",
+  age: 3,
+};
+
+function hello(this: Cat, message: string) {
+  console.log(`Hello ${this.name}, ${message}`);
+}
+
+hello.call(cat, "You are pretty awesome!");
+```

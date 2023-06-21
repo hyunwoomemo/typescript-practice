@@ -1,19 +1,15 @@
-interface UserA {
+interface Cat {
   name: string;
   age: number;
 }
 
-interface UserB extends UserA {
-  isValid: boolean;
+const cat: Cat = {
+  name: "Lucy",
+  age: 3,
+};
+
+function hello(this: Cat, message: string) {
+  console.log(`Hello ${this.name}, ${message}`);
 }
 
-const hyun: UserA = {
-  name: "Hyun",
-  age: 85,
-};
-
-const neo: UserB = {
-  name: "Neo",
-  age: 102,
-  isValid: true,
-};
+hello.call(cat, "You are pretty awesome!");
