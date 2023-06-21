@@ -10,7 +10,6 @@ interface UserB extends UserA {
 const hyun: UserA = {
   name: "Hyun",
   age: 85,
-  isValid: true,
 };
 
 const neo: UserB = {
