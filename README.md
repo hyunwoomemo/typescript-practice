@@ -334,3 +334,76 @@ console.log(neo.last);
 console.log(neo.age);
 
 ```
+
+### 제네릭 - 함수
+
+```js
+interface Obj {
+  x: number;
+}
+
+type Arr = [number, number];
+
+function toArray(a: string, b: string): string[];
+function toArray(a: number, b: number): number[];
+function toArray(a: boolean, b: boolean): boolean[];
+function toArray(a: Obj, b: Obj): Obj[];
+function toArray(a: Arr, b: Arr): Arr[];
+function toArray(a: any, b: any) {
+  return [a, b];
+}
+```
+
+함수를 사용할 때마다 오버로드 개념을 계속 추가할 수는 없다.
+이 때 `제네릭` 사용!
+
+```js
+interface Obj {
+  x: number;
+}
+
+type Arr = [number, number];
+
+function toArray<T>(a: T, b: T) {
+  return [a, b];
+}
+
+console.log(toArray("Neo", "dfg"), toArray(1, 2), toArray(true, false), toArray({ x: 1 }, { x: 2 }), toArray([1, 2], [3, 4]));
+
+console.log(toArray("Neo", "Anderson"), toArray < Arr > ([1, 2], [3, 4]));
+```
+
+### 제네릭 - 클래스
+
+```js
+class User<P> {
+  constructor(public payload: P) {}
+
+  getPayload() {
+    return this.payload;
+  }
+}
+
+interface UserAType {
+  name: string;
+  age: number;
+  isValid: boolean;
+}
+interface UserBType {
+  name: string;
+  age: number;
+  emails: string[];
+}
+
+const hyun = new User<UserAType>({
+  name: "Hyun",
+  age: 85,
+  isValid: true,
+});
+
+const neo = new User<UserBType>({
+  name: "Neo",
+  age: 102,
+  emails: ["neo@gmail.com"],
+});
+```

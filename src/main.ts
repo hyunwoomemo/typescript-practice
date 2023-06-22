@@ -1,24 +1,30 @@
-class UserA {
-  constructor(public first: string = "", public last: string = "", public age: number = 0) {}
+class User<P> {
+  constructor(public payload: P) {}
 
-  getAge() {
-    return `${this.first} ${this.last} is ${this.age}`;
+  getPayload() {
+    return this.payload;
   }
 }
 
-class UserB extends UserA {
-  getAge() {
-    return `${this.first} ${this.last} is ${this.age}`;
-  }
+interface UserAType {
+  name: string;
+  age: number;
+  isValid: boolean;
+}
+interface UserBType {
+  name: string;
+  age: number;
+  emails: string[];
 }
 
-class UserC extends UserB {
-  getAge() {
-    return `${this.first} ${this.last} is ${this.age}`;
-  }
-}
+const hyun = new User<UserAType>({
+  name: "Hyun",
+  age: 85,
+  isValid: true,
+});
 
-const neo = new UserA("Neo", "Anderson", 102);
-console.log(neo.first);
-console.log(neo.last); // last 속성은 protecte로 정의되어 있어서 내부에서만 사용 가능
-console.log(neo.age); // age 속성은 private 속성으로 내부에서만 사용 가능
+const neo = new User<UserBType>({
+  name: "Neo",
+  age: 102,
+  emails: ["neo@gmail.com"],
+});
