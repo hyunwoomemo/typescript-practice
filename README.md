@@ -478,3 +478,80 @@ declare module "lodash" {
 직접 dts파일을 만들지 않고 아래 명령어를 입력해서 생성할 수 있다.
 
 `npm i @types/패키지명 -D`
+
+### 타입 가져오기와 내보내기
+
+`main.ts`
+
+```js
+import { getFullName, User } from "./user";
+
+const hyun: User = {
+  lastName: "Lee",
+  firstName: "Hyunwoo",
+  age: 30,
+  isValid: true,
+};
+
+const fullName = getFullName(hyun);
+
+console.log(fullName);
+console.log(hyun.isValid);
+```
+
+`user.ts`
+
+```js
+export interface User {
+  firstName: string;
+  lastName: string;
+  age: number;
+  isValid: boolean;
+}
+
+export function getFullName(user: User) {
+  return `${user.firstName} ${user.lastName}`;
+}
+```
+
+### tsconfig.json 구성 옵션
+
+```json
+{
+  // 컴파일러 옵션 지정
+  "compilerOptions": {
+    // 컴파일될 ES(JS) 버전 명시 - 'ES2015` 권장
+    "target": "ES2015",
+    // 모듈 시스템 지정 - "CommonJS", "AMD", "ESNext"
+    "module": "ESNext",
+    // 모듈 해석 방식 지정 - "Node", "Classic"
+    "moduleResolution": "node",
+    // ESM 모듈 방식 호환성 활성화 여부
+    "esModuleInterop": true,
+    // 모든 파일을 모듈로 컴파일, import 혹은 export 키워드 필수
+    "isolatedModules": false,
+    // 모듈 해석에 사용할 기준 경로 지정
+    "baseUrl": "./",
+    // 컴파일러가 참조할 타입 선언(d.ts)의 경로를 지정
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    // 컴파일에서 사용할 라이브러리 지정 - "ESNext", "DOM"
+    "lib": ["ESNext", "DOM"],
+    // 더 엄격한 타입 검사 활성화
+    "strict": true,
+    // 암시적 any 타입 검사 활성화
+    "noImplicitAny": false,
+    // 암시적 this 타입 검사 활성화
+    "noImplicitThis": false,
+    // 엄격한 Nullish 타입 검사 활성화
+    "strictNullChecks": false,
+    // 엄격한 함수의 매개변수 타입 검사 활성화
+    "strictPropertyInitialization": false,
+    // 엄격한 Bind, Call, Apply 메소드의 인수 검사 활성화
+    "strictBindCallApply": false
+  },
+  // 컴파일할 파일 경로 목록
+  "include": ["src/**/*.ts"],
+  // 컴파일에서 제외할 파일 경로 목록
+  "exclude": ["node_modules"]
+}
+```

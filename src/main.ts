@@ -1,7 +1,13 @@
-import _ from "lodash";
+import { getFullName, User } from "./user";
 
-const str = "the brown fox jumps over the lazy dog.";
+const hyun: User = {
+  lastName: "Lee",
+  firstName: "Hyunwoo",
+  age: 30,
+  isValid: true,
+};
 
-console.log(_.camelCase(str));
-console.log(_.snakeCase(str));
-console.log(_.kebabCase(str));
+const fullName = getFullName(hyun);
+
+console.log(fullName);
+console.log(hyun.isValid);
