@@ -574,26 +574,27 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"jeorp":[function(require,module,exports) {
-class User {
-    constructor(payload){
-        this.payload = payload;
-    }
-    getPayload() {
-        return this.payload;
-    }
-}
-const hyun = new User({
-    name: "Hyun",
-    age: 85,
-    isValid: true
-});
-const neo = new User({
-    name: "Neo",
-    age: 102,
-    emails: [
-        "neo@gmail.com"
+const dataA = {
+    name: "Data A",
+    value: "Hello world"
+};
+const dataB = {
+    name: "Data B",
+    value: 1234
+};
+const dataC = {
+    name: "Data C",
+    value: true
+};
+const dataD = {
+    name: "Data D",
+    value: [
+        1,
+        2,
+        3,
+        4
     ]
-});
+};
 
 },{}]},["fUTXd","jeorp"], "jeorp", "parcelRequire51f0")
 

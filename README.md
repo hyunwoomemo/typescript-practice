@@ -407,3 +407,33 @@ const neo = new User<UserBType>({
   emails: ["neo@gmail.com"],
 });
 ```
+
+### 제네릭 - 인터페이스, 제약 조건 (Constraints)
+
+```js
+interface MyData<T extends string | number> { // extends 키워드로 타입을 제한할 수 있다
+  name: string;
+  value: T;
+}
+
+const dataA: MyData<string> = {
+  name: "Data A",
+  value: "Hello world",
+};
+
+const dataB: MyData<number> = {
+  name: "Data B",
+  value: 1234,
+};
+
+const dataC: MyData<boolean> = {
+  name: "Data C",
+  value: true,
+};
+
+const dataD: MyData<number[]> = {
+  name: "Data D",
+  value: [1, 2, 3, 4],
+};
+
+```
