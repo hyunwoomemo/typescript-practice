@@ -264,9 +264,9 @@ add("hello", 2);
 
 ```js
 class UserA {
-  first: string = ""; // 초기값 설정 가능
-  last: string;
-  age: number;
+  public first: string = ""; // 초기값 설정 가능
+  protected last: string = "";
+  private age: number = 0;
 
   constructor(first: string, last: string, age: number) {
     this.first = first;
@@ -284,4 +284,53 @@ class UserB extends UserA {
     return `${this.first} ${this.last} is ${this.age}`;
   }
 }
+
+class UserC extends UserB {
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
+}
+
+const neo = new UserA("Neo", "Anderson", 102);
+console.log(neo.first);
+console.log(neo.last); // last 속성은 protecte로 정의되어 있어서 내부에서만 사용 가능
+console.log(neo.age); // age 속성은 private 속성으로 내부에서만 사용 가능
+```
+
+UserA의 속성 first, last, age가 constructor 의 파라미터인 first, last, age와 동일함
+
+이 부분에 대한 처리가 필요함
+
+```js
+class UserA {
+
+  constructor(
+    public first: string = '',
+    public last: string = '',
+    public age: number = 0
+  ) {
+  }
+
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
+}
+
+class UserB extends UserA {
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
+}
+
+class UserC extends UserB {
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
+}
+
+const neo = new UserA("Neo", "Anderson", 102);
+console.log(neo.first);
+console.log(neo.last);
+console.log(neo.age);
+
 ```
