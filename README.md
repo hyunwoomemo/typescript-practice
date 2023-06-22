@@ -437,3 +437,44 @@ const dataD: MyData<number[]> = {
 };
 
 ```
+
+### 패키지의 타입 선언
+
+`main.ts`
+
+```js
+// lodash.d.ts 를 작성하고 나서는 에러가 사라졌다.
+// 만약 파일명을 lodash.d.ts 가 아닌 main.d.ts로 수정하게 되면
+// 에러가 발생할 것이다. 이때는 삼중 슬래시 지시자와 참조 태그를 이용하면 에러가 사라진다!
+
+/// <reference path="./main.d.ts" />
+
+import _ from "lodash";
+
+const str = "the brown fox jumps over the lazy dog.";
+
+console.log(_.camelCase(str));
+console.log(_.snakeCase(str));
+console.log(_.kebabCase(str));
+```
+
+`main.d.ts`
+
+```js
+declare module "lodash" {
+  interface Lodash {
+    camelCase: (str: string) => string;
+    snakeCase: (str: string) => string;
+    kebabCase: (str: string) => string;
+  }
+
+  const _: Lodash;
+  export default _;
+}
+```
+
+#### DefinitelyTyped
+
+직접 dts파일을 만들지 않고 아래 명령어를 입력해서 생성할 수 있다.
+
+`npm i @types/패키지명 -D`
