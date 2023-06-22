@@ -220,3 +220,68 @@ function hello(this: Cat, message: string) {
 
 hello.call(cat, "You are pretty awesome!");
 ```
+
+### 함수 - 오버로딩(Overloading)
+
+// 1
+
+```js
+function add1(a: string, b: string) {
+  return a + b;
+}
+
+function add2(a: number, b: number) {
+  return a + b;
+}
+
+add1("hello", "world~"); // 'hello world'
+add2(1, 2); // 3
+add1("hello ", 2);
+add2("hello ", 2);
+```
+
+// 2
+
+```js
+function add(a: string, b: string): string; // 타입 선언
+function add(a: number, b: number): number; // 타입 선언
+function add(a: any, b: any) { // 함수 구현
+  return a + b;
+}
+
+add("hello ", "world"); // 'hello world'
+add(1, 2); // 3
+add("hello", 2);
+add("hello", 2);
+
+```
+
+### 클래스와 접근 제어자
+
+- public - 언제나 자유롭게 접근 가능, 클래스 바디에서 생략 가능
+- protected - 나와 파생된 후손 클래스 내에서 접근 가능
+- private - 내 클래스에서만 접근 가능
+
+```js
+class UserA {
+  first: string = ""; // 초기값 설정 가능
+  last: string;
+  age: number;
+
+  constructor(first: string, last: string, age: number) {
+    this.first = first;
+    this.last = last;
+    this.age = age;
+  }
+
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
+}
+
+class UserB extends UserA {
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
+}
+```

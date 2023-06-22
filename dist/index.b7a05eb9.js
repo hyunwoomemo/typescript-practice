@@ -574,14 +574,13 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"jeorp":[function(require,module,exports) {
-const cat = {
-    name: "Lucy",
-    age: 3
-};
-function hello(message) {
-    console.log(`Hello ${this.name}, ${message}`);
+function add(a, b) {
+    return a + b;
 }
-hello.call(cat, "You are pretty awesome!");
+add("hello ", "world"); // 'hello world'
+add(1, 2); // 3
+add("hello", 2);
+add("hello", 2);
 
 },{}]},["fUTXd","jeorp"], "jeorp", "parcelRequire51f0")
 

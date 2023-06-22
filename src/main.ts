@@ -1,15 +1,21 @@
-interface Cat {
-  name: string;
+class UserA {
+  first: string = ""; // 초기값 설정 가능
+  last: string;
   age: number;
+
+  constructor(first: string, last: string, age: number) {
+    this.first = first;
+    this.last = last;
+    this.age = age;
+  }
+
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
 }
 
-const cat: Cat = {
-  name: "Lucy",
-  age: 3,
-};
-
-function hello(this: Cat, message: string) {
-  console.log(`Hello ${this.name}, ${message}`);
+class UserB extends UserA {
+  getAge() {
+    return `${this.first} ${this.last} is ${this.age}`;
+  }
 }
-
-hello.call(cat, "You are pretty awesome!");
